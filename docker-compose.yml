@@ -23,7 +23,6 @@ services:
             - sail
         depends_on:
             - redis
-            - selenium
     redis:
         image: 'redis:alpine'
         ports:
@@ -39,14 +38,6 @@ services:
                 - ping
             retries: 3
             timeout: 5s
-    selenium:
-        image: seleniarm/standalone-chromium
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        volumes:
-            - '/dev/shm:/dev/shm'
-        networks:
-            - sail
 networks:
     sail:
         driver: bridge
