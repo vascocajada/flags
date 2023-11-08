@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+        "name": "Portugal",
+        "src": "portugal_flag_src"
+        },
+        {
+        "name": "France",
+        "src": "france_flag_src"
+        },
+        {
+        "name": "Spain",
+        "src": "spain_flag_src"
+        },
+        {
+        "name": "Germany",
+        "src": "germany_flag_src"
+        },
+        {
+        "name": "Italy",
+        "src": "italy_flag_src"
+        }
+    ]
+}

@@ -1,6 +1,7 @@
 import { flushPromises, mount, shallowMount } from '@vue/test-utils'
 import FlagApp from './FlagApp.vue'
 import axios from 'axios'
+import mockFlagListJson from '../mocks/mockFlagList.json'
 
 test('Main page displays title', () => {
   const wrapper = shallowMount(FlagApp, {})
@@ -16,7 +17,8 @@ test('Main page displays spinner', () => {
 })
 
 test('Main page displays flags', async () => {
-  const mockFlagList = {data: [1,2,3,4,5]}
+  const mockFlagList = mockFlagListJson
+
   jest.spyOn(axios, 'get').mockResolvedValue(mockFlagList)
 
   const wrapper = mount(FlagApp, {})
@@ -27,5 +29,8 @@ test('Main page displays flags', async () => {
   // Wait until the DOM updates.
   await flushPromises()
 
-  expect(wrapper.findAll('[data-test="flag-item"')).toHaveLength(5)
+  const flags = wrapper.findAll('[data-test="flag-item"]')
+
+  expect(flags).toHaveLength(5)
+  expect(flags[0].text()).toContain('Portugal')
 })

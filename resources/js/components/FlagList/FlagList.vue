@@ -1,11 +1,19 @@
 <script>
+import FlagItem from '../FlagItem/FlagItem.vue'
+
 export default {
-    props: ['flags']
+    props: ['flags'],
+    components: {
+        FlagItem
+    }
 }
 </script>
 
 <template>
     <div class="mx-auto container columns-xs gap-4">
-        <div v-for="flag in flags" data-test="flag-item">YO</div>
+        <FlagItem
+            v-for="flag in flags"
+            :flag="flag"
+        />
     </div>
 </template>
