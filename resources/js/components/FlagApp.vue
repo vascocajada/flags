@@ -1,11 +1,10 @@
 
 <script>
-/* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
-/* import specific icons */
 import { faCog } from '@fortawesome/free-solid-svg-icons'
-/* add icons to the library */
 library.add(faCog)
+
+import axios from 'axios'
 
 import FlagList from './FlagList/FlagList.vue'
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner.vue'
@@ -16,6 +15,16 @@ export default {
             requestLoading: true,
             flags: []
         }
+    },
+    created() {
+        axios.get('/api/flags')
+            .then(response => {
+                this.flags = response.data
+                this.requestLoading = false
+            })
+            .catch(error => {
+                // console.log(error)
+            })
     },
     components: {
         FlagList,
