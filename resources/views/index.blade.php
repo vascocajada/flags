@@ -12,7 +12,7 @@
 
 <body>
     <div id="app">
-        <example-counter></example-counter>
+        <flag-app></flag-app>
     </div>
 </body>
 
