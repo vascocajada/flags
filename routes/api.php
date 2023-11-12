@@ -14,4 +14,4 @@ use App\Http\Controllers\FlagController;
 |
 */
 
-Route::get('/flags', [FlagController::class, 'list']);
+Route::get('/flag-list', [FlagController::class, 'list']);

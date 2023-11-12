@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\FlagApis;
+namespace App\Interfaces;
 
 interface FlagApiInterface
 {

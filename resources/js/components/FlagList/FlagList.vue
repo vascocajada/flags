@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-    <div class="mx-auto container columns-xs gap-4">
+    <div class="mx-auto container gap-4 grid grid-cols-3">
         <FlagItem
             v-for="flag in flags"
             :flag="flag"

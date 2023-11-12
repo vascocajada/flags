@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
@@ -14,7 +12,7 @@ class FlagControllerTest extends TestCase
      */
     public function test_response_ok()
     {
-        $response = $this->get('/api/flags');
+        $response = $this->get('/api/flag-list');
 
         $response->assertStatus(200);
     }
@@ -24,10 +22,10 @@ class FlagControllerTest extends TestCase
      */
     public function test_response_is_not_empty()
     {
-        $response = $this->get('/api/flags');
+        $response = $this->get('/api/flag-list');
 
         $response->assertJson(fn (AssertableJson $json) =>
-            $json->has('data')
+            $json->has('0.name')
         );
     }
 }

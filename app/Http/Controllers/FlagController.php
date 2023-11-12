@@ -16,9 +16,7 @@ class FlagController extends BaseController
     {
         $flags = $this->flagService->getFlags();
 
-        return response()->json([
-            "data" => $flags
-        ]);
+        return response()->json($flags);
     }
 
 }

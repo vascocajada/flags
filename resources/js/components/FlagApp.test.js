@@ -24,7 +24,7 @@ test('Main page displays flags', async () => {
   const wrapper = mount(FlagApp, {})
 
   expect(axios.get).toHaveBeenCalledTimes(1)
-  expect(axios.get).toHaveBeenCalledWith('/api/flags')
+  expect(axios.get).toHaveBeenCalledWith('/api/flag-list')
 
   // Wait until the DOM updates.
   await flushPromises()

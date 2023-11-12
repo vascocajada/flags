@@ -5,8 +5,8 @@ export default {
 </script>
 
 <template>
-    <div data-test="flag-item">
+    <div data-test="flag-item" class="pb-4">
         <h2>{{ flag.name }}</h2>
-        <img :src="flag.src" :alt="flag.name" />
+        <img :src="flag.image" :alt="flag.name" />
     </div>
 </template>

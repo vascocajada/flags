@@ -17,7 +17,7 @@ export default {
         }
     },
     created() {
-        axios.get('/api/flags')
+        axios.get('/api/flag-list')
             .then(response => {
                 this.flags = response.data
                 this.requestLoading = false
