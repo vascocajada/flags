@@ -5,6 +5,7 @@ import { faCog } from '@fortawesome/free-solid-svg-icons'
 library.add(faCog)
 
 import axios from 'axios'
+import { useAuth0 } from '@auth0/auth0-vue';
 
 import FlagList from './FlagList/FlagList.vue'
 import LoadingSpinner from './LoadingSpinner/LoadingSpinner.vue'
@@ -16,7 +17,11 @@ export default {
             flags: []
         }
     },
-    created() {
+    async created() {
+        const { getAccessTokenSilently } = useAuth0();
+        const token = await getAccessTokenSilently()
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
         axios.get('/api/flag-list')
             .then(response => {
                 this.flags = response.data
