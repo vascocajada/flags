@@ -23,6 +23,10 @@ Once everything is properly installed, configure your laravel application.
 
     cp .env.example .env && php artisan key:generate
 
+Then you can either set up your own auth0 application and follow their documentation on how to connect it with the Flag App (moslty just change the credentials in `resources/js/app.js`), or you can use the auth0 application I created already by doing
+
+    cp .auth0.app.example.json .auth0.app.json && cp .auth0.api.example.json .auth0.api.json
+
 Launch laravel's dev web server with
 
     vendor/bin/sail up -d
@@ -33,4 +37,4 @@ And build the application's frontend bundles with
 
 Once these commands finish running you should be able to see the application at http://localhost ! 👏👏
 
-Go ahead and create an account to see the flag list!
+If you used my auth0 application, you can login with username `jack@email.com` and password `Test123@`.
