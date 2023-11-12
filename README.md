@@ -3,6 +3,7 @@
 To be able to run this project you will need:
 - a working shell command line (ex.: [terminator](https://gnome-terminator.org/), [iTerm2](https://iterm2.com/), [wsl](https://learn.microsoft.com/en-us/windows/wsl/install))
 - [node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [php](https://www.php.net/manual/en/install.php) version ^8.0.2
 - [composer](https://getcomposer.org/)
 - [docker](https://docs.docker.com/compose/install/) and its [compose](https://docs.docker.com/compose/install/) plugin
 
@@ -18,7 +19,11 @@ Enter the project with `cd flags` and run the following commands to install the 
     npm install
     composer install
 
-Once everything is properly installed, launch laravel's dev web server with
+Once everything is properly installed, configure your laravel application.
+
+    cp .env.example .env && php artisan key:generate
+
+Launch laravel's dev web server with
 
     vendor/bin/sail up -d
 
