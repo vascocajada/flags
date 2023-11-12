@@ -89,6 +89,8 @@ class FlagServiceTest extends TestCase
 
         $flags = $flagService->getFlags();
 
-        $this->assertEquals(self::MOCK_RESPONSE_REDIS, $flags);
+        $this->assertCount(3, $flags);
+        $this->assertEquals($flags[0]::class, 'App\DTO\FlagDTO');
+        $this->assertEquals($flags[0]->name, 'flag1');
     }
 }
