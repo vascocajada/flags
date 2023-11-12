@@ -9,11 +9,11 @@ const app = createApp({});
 
 app.use(
     createAuth0({
-        domain: "dev-u5qudu3bjhw1qjdt.us.auth0.com",
-        clientId: "PX04fsszF5YWdyVUFAWgx4MZvyqERzQA",
+        domain: "dev-n3axx2z7c054q5dc.us.auth0.com",
+        clientId: "ABv7YDDQnDfb5OkqCQ2Ll96nDWxZaxOb",
         authorizationParams: {
             redirect_uri: 'http://localhost',
-            audience: "https://github.com/auth0/laravel-auth0",
+            audience: "https://github.com/auth0/flag-app",
         }
     })
 )
