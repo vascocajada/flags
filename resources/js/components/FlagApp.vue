@@ -35,7 +35,7 @@ export default {
 
 <template>
     <div class="text-center py-6">
-        <h1 class="text-2lg mb-4">Flags App</h1>
+        <h1 class="uppercase font-bold text-2xl mb-14">flags app</h1>
         <FlagList v-if="!requestLoading" :flags="flags" />
         <LoadingSpinner v-else />
     </div>
