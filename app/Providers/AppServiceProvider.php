@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Interfaces\FlagApiInterface;
+use App\Services\FlagApis\FlagApiInterface;
 use App\Services\FlagApis\RestCountriesApi;
 use Illuminate\Support\ServiceProvider;
 

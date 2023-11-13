@@ -2,31 +2,14 @@
 
 namespace Tests\Unit;
 
-use App\Interfaces\FlagApiInterface;
+use App\Services\FlagApis\FlagApiInterface;
 use PHPUnit\Framework\TestCase;
 use App\Services\FlagService;
 use App\Services\RedisRepository;
-use Illuminate\Support\Facades\Facade;
-use Illuminate\Support\Facades\Redis;
 
 class FlagServiceTest extends TestCase
 {
-    const MOCK_RESPONSE_API = [
-        [
-            "name" => ["common" => "flag1"],
-            "flags" => ["svg" => "image1"]
-        ],
-        [
-            "name" => ["common" => "flag2"],
-            "flags" => ["svg" => "image2"]
-        ],
-        [
-            "name" => ["common" => "flag3"],
-            "flags" => ["svg" => "image3"]
-        ]
-    ];
-
-    const MOCK_RESPONSE_REDIS = [
+    const MOCK_RESPONSE = [
         [
             "name" => "flag1",
             "image" => "image1"
@@ -56,7 +39,7 @@ class FlagServiceTest extends TestCase
 
         $redisRepositoryMock->expects($this->once())
             ->method('get')
-            ->willReturn(json_encode(self::MOCK_RESPONSE_REDIS));
+            ->willReturn(json_encode(self::MOCK_RESPONSE));
 
         $flagService = new FlagService($flagApiMock, $redisRepositoryMock);
         $flags = $flagService->getFlags();
@@ -75,8 +58,7 @@ class FlagServiceTest extends TestCase
             ->getMock();
 
         $flagApiMock->expects($this->once())
-            ->method('getFlags')
-            ->willReturn(self::MOCK_RESPONSE_API);
+            ->method('getFlags');
 
         $redisRepositoryMock->expects($this->once())
             ->method('get')
@@ -87,10 +69,6 @@ class FlagServiceTest extends TestCase
 
         $flagService = new FlagService($flagApiMock, $redisRepositoryMock);
 
-        $flags = $flagService->getFlags();
-
-        $this->assertCount(3, $flags);
-        $this->assertEquals($flags[0]::class, 'App\DTO\FlagDTO');
-        $this->assertEquals($flags[0]->name, 'flag1');
+        $flagService->getFlags();
     }
 }

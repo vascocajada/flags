@@ -2,8 +2,7 @@
 
 namespace App\Services;
 
-use App\Interfaces\FlagApiInterface;
-use App\DTO\FlagDTO;
+use App\Services\FlagApis\FlagApiInterface;
 
 class FlagService
 {
@@ -16,26 +15,11 @@ class FlagService
         $flags = $this->redisRepository->get('flags');
         if (!$flags) {
             $flags = $this->flagApi->getFlags();
-            $flagsPretty = $this->transformToDTO($flags);
-            $this->redisRepository->set('flags', json_encode($flagsPretty));
+            $this->redisRepository->set('flags', json_encode($flags));
         } else {
-            $flagsPretty = json_decode($flags, true);
+            $flags = json_decode($flags, true);
         }
 
-        return $flagsPretty;
-    }
-
-    protected function transformToDTO(array $flags): array
-    {
-        $flagsDTO = [];
-
-        foreach ($flags as $flag) {
-            $flagsDTO[] = new FlagDTO(
-                $flag['name']['common'],
-                $flag['flags']['svg']
-            );
-        }
-
-        return $flagsDTO;
+        return $flags;
     }
 }
